@@ -1,77 +1,60 @@
-const url = 'https://api.github.com/users'
-const reposQuantity = 10
+import { user, setProfileData } from '/src/scripts/users.js'
+import { repos, setReposData } from '/src/scripts/repositories.js'
 
-async function sendUserNameToGitHub(){
+document.getElementById('btn-search').addEventListener('click', () => {
+    fetchFromGitHub()
+})
+
+document.getElementById('input-search').addEventListener('keyup', function (e) {
+    var key = e.which || e.keyCode;
+    if (key == 13) { // codigo da tecla enter      
+        fetchFromGitHub()
+    }
+});
+
+function fetchFromGitHub() {
     let userName = document.getElementById('input-search').value
 
     if (userName.length === 0) {
-        alert('Preencha o campo com o nome do usuário no GitHub') 
+        alert('Preencha o campo com o nome do usuário no GitHub')
         return
     }
 
-    await getUser(userName).then(response => {
-        if(response.ok && !response.ok) throw new Error("Ocorreu um erro ao tentar buscar esse usuário");  
+    /* Get user info */
+    getUserInfo(userName);
 
-        setProfileData(response)
-    }).catch(function(error) {
-        document.getElementById('info').innerHTML = "Usuário não encontrado"
-
-        console.log(error);
-    });
-
-    await getRepos(userName).then(response => {
-        if(response.ok && !response.ok) throw new Error("Ocorreu um erro ao tentar buscar os repositório desse usuário");  
-
-        setReposData(response)
-    }).catch(function(error) {
-        document.getElementById('repositories').innerHTML = "Repositórios não encontrados"
-
-        console.log(error);
-    });
+    /* Get repos info */
+    getUserRepositories(userName);
 
     showResult()
 }
 
-document.getElementById('btn-search').addEventListener('click', () => {
-    sendUserNameToGitHub()
-})
+function getUserRepositories(userName) {
+    repos(userName).then(response => {
+        if (response.ok && !response.ok)
+            throw new Error("Ocorreu um erro ao tentar buscar os repositório desse usuário");
 
-document.getElementById('input-search').addEventListener('keyup', function(e){
-    var key = e.which || e.keyCode;
-    if (key == 13) { // codigo da tecla enter      
-        sendUserNameToGitHub()
-    }
-  });
+        setReposData(response);
+    }).catch(function (error) {
+        document.getElementById('repositories').innerHTML = "Repositórios não encontrados";
 
-function showResult(){
+        console.log(error);
+    });
+}
+
+function getUserInfo(userName) {
+    user(userName).then(response => {
+        if (response.ok && !response.ok)
+            throw new Error("Ocorreu um erro ao tentar buscar esse usuário");
+
+        setProfileData(response);
+    }).catch(function (error) {
+        document.getElementById('info').innerHTML = "Usuário não encontrado";
+
+        console.log(error);
+    });
+}
+
+function showResult() {
     document.getElementById('result').classList.add("show")
-}
-
-async function getUser(user) {        
-    const response = await fetch(`${url}/${user}`)        
-    return await response.json()        
-}
-
-async function getRepos(user) {    
-    const response = await fetch(`${url}/${user}/repos?per_page=${reposQuantity}&sort=createdAt:%20asc`)
-    return await response.json()    
-}
-
-const setProfileData = (userData) => {    
-    let userInfo = `<img src="${userData.avatar_url}" alt="Foto do perfil">
-                    <div class="data">
-                        <h1>${userData.name ?? 'Não possui nome cadastrado 😢'}</h1>
-                        <p>${userData.bio ?? 'Não possui bio cadastrada 😢'}</p>
-                    </div>`
-
-    document.getElementById('info').innerHTML = userInfo
-}
-
-const setReposData = (reposData) => {        
-    let output = ""
-    reposData.forEach(repo => {
-        output += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`
-    });        
-
-    document.getElementById('list').innerHTML = output
 }
