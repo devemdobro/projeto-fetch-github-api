@@ -11,16 +11,17 @@ img {
 }
 
 body {
-  background: linear-gradient(#af67e9, #6565e7);
+  background-color:#24292e;
   font-family: "Kumbh Sans", sans-serif;
+  height: 100vh;
+  text-align: center;
 }
 
 main {
-  display: flex;
-  align-items: center;
+  display: flex;  
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  padding: 50px 0 0;      
 }
 
 .devicon-github-original{
@@ -33,10 +34,9 @@ main {
   padding: 70px 0;
 }
 
-.show{
-  display: block;
+.container .result.show{
+  display: flex;
 }
-
 
 .container {
   width: 60%; /* se for uma tela menor que 980px vai se adaptar a 70% */
@@ -48,6 +48,7 @@ main {
   align-items: center;
   border-radius: 30px;
   padding: 30px;
+  margin: 0 auto;
 }
 
 .container header {
@@ -98,6 +99,7 @@ main {
 
 .container .result .info {
   display: flex;  
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -137,16 +139,17 @@ main {
   justify-content: center;
 }
 
-.container .result .repositories ul li{
-  margin: 20px;
-  border: 1px solid grey;
+.container .result .repositories ul li a{
   padding: 20px;
+  border: 1px solid grey;  
+  margin: 20px;
+  display: block;
 }
 
 @media (max-width: 1280px) {
   .container {
     flex-direction: column;
-    max-width: 80%;
+    width: 90%;
     border-radius: 20px;
   }
 
@@ -160,9 +163,27 @@ main {
   }
 }
 
+@media (max-width: 768px) {
+  .container header #input-search,
+  .container header #btn-search
+  {
+    width: 100%;
+  }
+}
+
 @media (max-width: 425px) {
   main {
-    padding: 15% 0;
-    height: 100%;
+    padding: 15% 0;    
+  }
+
+  .container .result .info img{
+    margin-bottom: 20px;
+  }
+
+  .container .result .info img,
+  .container .result .info .data
+  {
+    width: 100%;
+    padding: 0;
   }
 }
