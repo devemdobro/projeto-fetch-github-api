@@ -12,9 +12,9 @@ img {
 
 body {
   background-color:#24292e;
-  font-family: "Kumbh Sans", sans-serif;
-  height: 100vh;
-  text-align: center;
+  font-family: "Kumbh Sans", sans-serif;  
+  text-align: center;    
+  padding-bottom: 100px;
 }
 
 main {
@@ -144,6 +144,13 @@ main {
   border: 1px solid grey;  
   margin: 20px;
   display: block;
+  border-radius: 7px;
+  transition: 0.3s ease-in-out;
+}
+
+.container .result .repositories ul li a:hover{
+  background-color:hotpink;
+  color: #fff
 }
 
 @media (max-width: 1280px) {
