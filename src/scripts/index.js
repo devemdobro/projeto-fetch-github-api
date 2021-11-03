@@ -20,10 +20,8 @@ function fetchFromGitHub() {
         return
     }
 
-    /* Get user info */
-    getUserInfo(userName);
+    getUserProfile(userName);
 
-    /* Get repos info */
     getUserRepositories(userName);
 
     showResult()
@@ -42,7 +40,7 @@ function getUserRepositories(userName) {
     });
 }
 
-function getUserInfo(userName) {
+function getUserProfile(userName) {
     user(userName).then(response => {
         if (response.ok && !response.ok)
             throw new Error("Ocorreu um erro ao tentar buscar esse usuário");
