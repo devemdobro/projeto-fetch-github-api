@@ -13,7 +13,7 @@ document.getElementById('input-search').addEventListener('keyup', function (e) {
 });
 
 function fetchFromGitHub() {
-    let userName = document.getElementById('input-search').value
+    const userName = document.getElementById('input-search').value
 
     if (userName.length === 0) {
         alert('Preencha o campo com o nome do usuário no GitHub')
