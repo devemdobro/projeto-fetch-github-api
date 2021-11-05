@@ -1,5 +1,5 @@
-import { user, setProfileData } from '/src/scripts/users.js'
-import { repos, setReposData } from '/src/scripts/repositories.js'
+import { getUserProfile } from '/src/scripts/users.js'
+import { getUserRepositories } from '/src/scripts/repositories.js'
 
 document.getElementById('btn-search').addEventListener('click', () => {
     fetchFromGitHub()
@@ -25,32 +25,6 @@ function fetchFromGitHub() {
     getUserRepositories(userName);
 
     showResult()
-}
-
-function getUserRepositories(userName) {
-    repos(userName).then(response => {
-        if (response.ok && !response.ok)
-            throw new Error("Ocorreu um erro ao tentar buscar os repositório desse usuário");
-
-        setReposData(response);
-    }).catch(function (error) {
-        document.getElementById('repositories').innerHTML = "Repositórios não encontrados";
-
-        console.log(error);
-    });
-}
-
-function getUserProfile(userName) {
-    user(userName).then(response => {
-        if (response.ok && !response.ok)
-            throw new Error("Ocorreu um erro ao tentar buscar esse usuário");
-
-        setProfileData(response);
-    }).catch(function (error) {
-        document.getElementById('info').innerHTML = "Usuário não encontrado";
-
-        console.log(error);
-    });
 }
 
 function showResult() {

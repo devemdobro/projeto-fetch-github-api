@@ -15,4 +15,17 @@ const setProfileData = (userData) => {
     document.getElementById('info').innerHTML = userInfo
 }
 
-export { user, setProfileData }
+function getUserProfile(userName) {
+    user(userName).then(response => {
+        if (response.ok && !response.ok)
+            throw new Error("Ocorreu um erro ao tentar buscar esse usuário");
+
+        setProfileData(response);
+    }).catch(function (error) {
+        document.getElementById('info').innerHTML = "Usuário não encontrado";
+
+        console.log(error);
+    });
+}
+
+export { user, setProfileData, getUserProfile }

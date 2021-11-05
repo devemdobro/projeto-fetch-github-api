@@ -14,4 +14,17 @@ const setReposData = (reposData) => {
     document.getElementById('list').innerHTML = output
 }
 
-export { repos, setReposData }
+function getUserRepositories(userName) {
+    repos(userName).then(response => {
+        if (response.ok && !response.ok)
+            throw new Error("Ocorreu um erro ao tentar buscar os repositório desse usuário");
+
+        setReposData(response);
+    }).catch(function (error) {
+        document.getElementById('repositories').innerHTML = "Repositórios não encontrados";
+
+        console.log(error);
+    });
+}
+
+export { repos, setReposData, getUserRepositories }
