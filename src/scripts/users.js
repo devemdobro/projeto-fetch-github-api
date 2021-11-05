@@ -16,14 +16,10 @@ const setProfileData = (userData) => {
 }
 
 function getUserProfile(userName) {
-    user(userName).then(response => {
-        if (response.ok && !response.ok)
-            throw new Error("Ocorreu um erro ao tentar buscar esse usuário");
-
+    user(userName).then(response => {        
         setProfileData(response);
     }).catch(function (error) {
         document.getElementById('info').innerHTML = "Usuário não encontrado";
-
         console.log(error);
     });
 }

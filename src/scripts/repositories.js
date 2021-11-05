@@ -11,18 +11,15 @@ const setReposData = (reposData) => {
         output += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`
     });        
 
+    document.getElementById('title').innerHTML = "Repositórios";
     document.getElementById('list').innerHTML = output
 }
 
-function getUserRepositories(userName) {
-    repos(userName).then(response => {
-        if (response.ok && !response.ok)
-            throw new Error("Ocorreu um erro ao tentar buscar os repositório desse usuário");
-
+function getUserRepositories(userName) {  
+    repos(userName).then(response => {            
         setReposData(response);
     }).catch(function (error) {
-        document.getElementById('repositories').innerHTML = "Repositórios não encontrados";
-
+        document.getElementById('title').innerHTML = "Repositórios não encontrados";
         console.log(error);
     });
 }
