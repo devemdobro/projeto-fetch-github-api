@@ -16,8 +16,8 @@ const setReposData = (reposData) => {
 }
 
 function getUserRepositories(userName) {  
-    repos(userName).then(response => {            
-        setReposData(response);
+    repos(userName).then(reposData => {            
+        setReposData(reposData);
     }).catch(function (error) {
         document.getElementById('title').innerHTML = "Repositórios não encontrados";
         console.log(error);

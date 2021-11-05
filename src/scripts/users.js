@@ -16,8 +16,8 @@ const setProfileData = (userData) => {
 }
 
 function getUserProfile(userName) {
-    user(userName).then(response => {        
-        setProfileData(response);
+    user(userName).then(userData => {        
+        setProfileData(userData);
     }).catch(function (error) {
         document.getElementById('info').innerHTML = "Usuário não encontrado";
         console.log(error);
