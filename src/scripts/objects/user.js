@@ -1,17 +1,17 @@
 const user = {
-    avatarUrl: "",
-    name: "",
-    bio: "",
-    userName: "",
+    avatarUrl: '',
+    name: '',
+    bio: '',
+    userName: '',
     repositories: [],
-    async setInfo(json) {               
-        this.avatarUrl = json.avatar_url  
-        this.name = json.name
-        this.bio = json.bio
-        this.userName = json.login            
+    async setInfo(gitHubUser) {               
+        this.avatarUrl = gitHubUser.avatar_url  
+        this.name = gitHubUser.name
+        this.bio = gitHubUser.bio
+        this.userName = gitHubUser.login            
     },
-    async setRepositories(json) {                
-        this.repositories = json
+    async setRepositories(repositories) {                
+        this.repositories = repositories
     }    
 }
 

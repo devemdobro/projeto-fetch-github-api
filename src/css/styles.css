@@ -106,7 +106,7 @@ main {
 .container .profile-data .info img{
   width: 50%;
   border-radius: 50%;
-  border: 10px solid blueviolet;
+  border: 10px solid hotpink;
 }
 
 .container .profile-data .info h1{
@@ -148,9 +148,7 @@ main {
   color: #fff
 }
 
-.container .profile-data.hide,
-.container .profile-data .repositories.hide
-{
+.container .profile-data.hide{
   display: none;
 }
 

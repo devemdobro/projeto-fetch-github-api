@@ -1,27 +1,26 @@
 const screen = {
     userProfile: document.querySelector('.profile-data'),
-    userProfileImg: document.querySelector('#info img'),
-    userProfileName: document.querySelector('#info .data h1'),
-    userProfileBio: document.querySelector('#info .data p'),
-    userProfileRepositoriesSection: document.querySelector('#info .repositories'),
-    userProfileRepositoriesList: document.querySelector('#info .repositories ul'),
-    async render(user) {
-        let repositoriesItens = ""
+    renderUser(user) {
+        let repositoriesItens = ''
         user.repositories.forEach(repo => repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`)
-    
-        this.userProfileImg.src = user.avatarUrl
-        this.userProfileName.innerHTML = user.name ?? 'Não possui nome cadastrado 😢'
-        this.userProfileBio.innerHTML = user.bio ?? 'Não possui bio cadastrada 😢'
-    
-        this.userProfile.classList.remove('hide')
-        this.userProfileRepositoriesSection.classList.remove('hide')
-    
-        if(repositoriesItens.length > 0) {
-            this.userProfileRepositoriesList.innerHTML = repositoriesItens
-        } else {
-            this.userProfileRepositoriesSection.classList.add('hide')
-            this.userProfileRepositoriesList.innerHTML = ''
+
+        this.userProfile.innerHTML = `<div class="info" id="info">
+                                        <img src="${user.avatarUrl}" alt="Foto do perfil">
+                                        <div class="data">
+                                            <h1>${user.name ?? 'Não possui nome cadastrado 😢'}</h1>
+                                            <p>${user.bio ?? 'Não possui bio cadastrada 😢'}</p>
+                                        </div>
+                                    </div>`
+        if (user.repositories.length > 0) {
+            this.userProfile.innerHTML += `<div class="repositories section">
+                                                <h2 id="title">Repositórios</h2>                      
+                                                <ul id="list">${repositoriesItens}</ul>
+                                            </div>`
         }
+
+    },
+    renderNotFound() {
+        this.userProfile.innerHTML = "<h3>Usuário não encontrado</h3>"
     }
 }
 
