@@ -32,7 +32,7 @@ async function render(userName) {
     const repositories = await getRepositories(userName)
 
     if (userInfo.message === "Not Found") {
-        profileDataHTML.innerHTML = "<h3>Não encontrado</h3>"
+        profileDataHTML.innerHTML = "<h3>Usuário não encontrado</h3>"
     } else {
         await user.setInfo(userInfo)
         await user.setRepositories(repositories)
