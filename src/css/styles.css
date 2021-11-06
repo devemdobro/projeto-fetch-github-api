@@ -10,6 +10,10 @@ img {
   max-width: 100%;
 }
 
+.hide{
+  display: none;
+}
+
 body {
   background-color:#24292e;
   font-family: "Kumbh Sans", sans-serif;  
@@ -32,10 +36,6 @@ main {
 
 .section{
   padding: 70px 0;
-}
-
-.container .result.show{
-  display: flex;
 }
 
 .container {
@@ -89,38 +89,37 @@ main {
   border-color: #ffffff;
 }
 
-.container .result{
+.container .profile-data{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
-  display: none;
+  padding: 40px;  
 }
 
-.container .result .info {
+.container .profile-data .info {
   display: flex;  
   flex-wrap: wrap;
   align-items: center;
 }
 
-.container .result .info .data{
+.container .profile-data .info .data{
   padding: 40px;
   width: 50%;
 }
 
-.container .result .info img{
+.container .profile-data .info img{
   width: 50%;
   border-radius: 50%;
   border: 10px solid blueviolet;
 }
 
-.container .result .info h1{
+.container .profile-data .info h1{
   font-size: 20px;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
-.container .result .info p{
+.container .profile-data .info p{
   font-size: 15px;  
   font-weight: 400;
   line-height: 23px;
@@ -128,18 +127,18 @@ main {
 
 /* REPOSITORIES */
 
-.container .result .repositories h2{
+.container .profile-data .repositories h2{
   margin-bottom: 30px;
   text-align: center;
 }
 
-.container .result .repositories ul{
+.container .profile-data .repositories ul{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.container .result .repositories ul li a{
+.container .profile-data .repositories ul li a{
   padding: 20px;
   border: 1px solid grey;  
   margin: 20px;
@@ -148,7 +147,7 @@ main {
   transition: 0.3s ease-in-out;
 }
 
-.container .result .repositories ul li a:hover{
+.container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff
 }
@@ -183,12 +182,12 @@ main {
     padding: 15% 0;    
   }
 
-  .container .result .info img{
+  .container .profile-data .info img{
     margin-bottom: 20px;
   }
 
-  .container .result .info img,
-  .container .result .info .data
+  .container .profile-data .info img,
+  .container .profile-data .info .data
   {
     width: 100%;
     padding: 0;
