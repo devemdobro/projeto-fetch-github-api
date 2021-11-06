@@ -6,7 +6,8 @@ const profileDataHTML = document.querySelector('.profile-data')
 const userInfoImgHTML = document.querySelector('#info img')
 const userInfoTitleHTML = document.querySelector('#info .data h1')
 const userInfoBioHTML = document.querySelector('#info .data p')
-const userRepositoriesListHTML= document.querySelector('.repositories ul')
+const userRepositoriesSectionHTML= document.querySelector('#info .repositories')
+const userRepositoriesListHTML= document.querySelector('#info .repositories ul')
 
 document.getElementById('btn-search').addEventListener('click', () => {
     const userName = document.getElementById('input-search').value
@@ -53,8 +54,13 @@ async function render(user) {
     userInfoTitleHTML.innerHTML = user.name ?? 'Não possui nome cadastrado 😢'
     userInfoBioHTML.innerHTML = user.bio ?? 'Não possui bio cadastrada 😢'
 
+    profileDataHTML.classList.remove('hide')
+    userRepositoriesSectionHTML.classList.remove('hide')
+
     if(repositoriesItens.length > 0) {
-        profileDataHTML.classList.remove('hide')
         userRepositoriesListHTML.innerHTML = repositoriesItens
+    }else {
+        userRepositoriesSectionHTML.classList.add('hide')
+        userRepositoriesListHTML.innerHTML = ''
     }
 }

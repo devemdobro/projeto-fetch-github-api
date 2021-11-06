@@ -148,7 +148,7 @@ main {
   color: #fff
 }
 
-.container .profile-data.hide{
+.hide{
   display: none;
 }
 
