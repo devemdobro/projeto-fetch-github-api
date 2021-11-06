@@ -37,8 +37,8 @@ async function getUserData(userName) {
 
     const repositories = await getRepositories(userName)
     
-    await user.setInfo(userResponse)
-    await user.setRepositories(repositories)
+    user.setInfo(userResponse)
+    user.setRepositories(repositories)
     
     screen.renderUser(user)
 }
