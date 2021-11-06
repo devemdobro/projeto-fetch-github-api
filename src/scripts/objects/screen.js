@@ -11,6 +11,7 @@ const screen = {
                                             <p>${user.bio ?? 'Não possui bio cadastrada 😢'}</p>
                                         </div>
                                     </div>`
+                                    
         if (user.repositories.length > 0) {
             this.userProfile.innerHTML += `<div class="repositories section">
                                                 <h2 id="title">Repositórios</h2>                      
