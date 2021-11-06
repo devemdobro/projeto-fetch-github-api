@@ -10,10 +10,6 @@ img {
   max-width: 100%;
 }
 
-.hide{
-  display: none;
-}
-
 body {
   background-color:#24292e;
   font-family: "Kumbh Sans", sans-serif;  
@@ -150,6 +146,10 @@ main {
 .container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff
+}
+
+.container .profile-data.hide{
+  display: none;
 }
 
 @media (max-width: 1280px) {
