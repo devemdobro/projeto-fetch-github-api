@@ -6,7 +6,7 @@ import { getRepositories } from '/src/scripts/services/repositories.js'
 
 document.getElementById('btn-search').addEventListener('click', () => {
     const userName = document.getElementById('input-search').value
-    validateInput(userName)
+    if(validateEmptyInput(userName)) return
     getUserData(userName)
 })
 
@@ -16,15 +16,15 @@ document.getElementById('input-search').addEventListener('keyup', function (e) {
     const isEnterKeyPressed = key == 13 // codigo da tecla enter
 
     if (isEnterKeyPressed) { 
-        validateInput(userName)
+        if(validateEmptyInput(userName)) return
         getUserData(userName)
     }
 })
 
-function validateInput(userName){
+function validateEmptyInput(userName){
     if (userName.length === 0) {
         alert('Preencha o campo com o nome do usuário no GitHub')
-        return
+        return true
     }
 }
 
