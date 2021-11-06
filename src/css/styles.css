@@ -148,7 +148,9 @@ main {
   color: #fff
 }
 
-.hide{
+.container .profile-data.hide,
+.container .profile-data .repositories.hide
+{
   display: none;
 }
 
