@@ -20,7 +20,6 @@ const screen = {
                                     </div>`                       
                                 
         if(user.repositories.length > 0){
-            console.log(user.repositories)
             let repositoriesItens = ''
             user.repositories.forEach(repo => 
                 
